@@ -1,0 +1,52 @@
+<header id="header" class="header-wrapper">
+    <div class="container">
+        <div class="header-wrapper_inner">
+            <div class="header-wrapper_logo">
+                <a href="javascript:void(0)" class="callNavigation">
+                    <i class="fal fa-bars"></i>
+                </a>
+                <a href="{% url 'home' %}">
+                    <img src="{% static 'public/upload/logo/LOGO-HAMER-CANDY-NEW.png' %} " alt="Home - Hamer USA">
+                </a>
+            </div>
+            <div class="header-wrapper_navigation">
+                <ul id="menu" class="list-unstyled mb-0">
+                    {% for menu in main_menus %}
+                    <li>
+                        <a class="menu-item" href="{% url '{home}' %}">{{menu.name}}</a>
+                    </li>
+                    {% endfor %}
+                    <!-- <li>
+                        <a class="active menu-item" href="{% url 'home' %}">Home</a>
+                    </li>
+                    <li>
+                        <a class="menu-item" href="{% url 'home' %}#about">About</a>
+                    </li>
+                    <li>
+                        <a class="menu-item" href="{% url 'home' %}#ingredients">Ingredients</a>
+                    </li>
+                    <li>
+                        <a class="menu-item" href="javascript:void(0)">Products</a>
+                        <div class="dropdown-menu">
+                            {% for article in articles %}
+                            <a class="dropdown-item" href="{% url 'article' article.id  %}">{{article.title}}</a> {% endfor %}
+                        </div>
+
+                    </li>
+                    <li>
+                        <a class="menu-item" href="{% url 'home' %}#photo">Photo</a>
+                    </li> -->
+                </ul>
+            </div>
+            <div class="header-wrapper_phone">
+                <a href="tel:{{webcontent.phone_number}}" class="button text-capitalize">Hotline:&nbsp;+{{webcontent.phone_number}}</a>
+            </div>
+        </div>
+    </div>
+    <div class="header-close">
+        <a href="javascript:void(0)" class="closeNavigation">
+            <i class="fas fa-times"></i>
+        </a>
+    </div>
+    <div class="header-overlay"></div>
+</header>

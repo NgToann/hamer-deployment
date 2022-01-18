@@ -1,0 +1,50 @@
+{% extends 'base.html' %} {% block content %}
+<script>
+    window.addEventListener("load", (function() {
+        let _html = ` <div class='popupCheckCode-header'>
+                            <p>
+                                This is an original product of Sino - USA Collaboration
+                            </p>
+                        </div>
+                        <div class='popupCheckCode-body'>
+                            <div class='popupCheckCode-seri'>
+                                Serial: {{product.serial_no}}
+                            </div>
+                            <div class='popupCheckCode-content'>
+                                <div class='popupCheckCode-content_column'>
+                                    <div class='title'>
+                                        <i class='fal fa-qrcode'></i>
+                                        Code scans
+                                    </div>
+                                    <div class='number'>
+                                        1
+                                    </div>
+                                </div>
+                                <div class='popupCheckCode-content_column'>
+                                    <div class='title'>
+                                        <i class='fal fa-user-friends'></i>
+                                        People scans
+                                    </div>
+                                    <div class='number'>
+                                        1
+                                    </div>
+                                </div>
+                            </div>
+                        </div>`;
+        Swal.fire({
+            icon: 'success',
+            html: _html,
+            showConfirmButton: false,
+            customClass: 'swalPopUpCheckCode',
+        });
+    }));
+</script>
+<div class="container mt-4">
+    <span>
+        {% if product %}
+        {% load humanize %}
+        <h2>{{product.product_name}} - {{product.product_price|intcomma}} vnd</h2>
+        {% endif %} 
+    </span> {{article.body|safe}}
+</div>
+{% endblock content %}

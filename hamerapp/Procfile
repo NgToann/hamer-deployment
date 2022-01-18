@@ -1,0 +1,1 @@
+web: gunicorn diep_project.wsgi --log-file -

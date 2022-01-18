@@ -1,0 +1,19 @@
+# Git
+.git
+.gitignore
+
+# Docker
+.docker
+
+# Python
+hamerapp/__pycache__/
+hamerapp/*/__pycache__/
+hamerapp/*/*/__pycache__/
+hamerapp/*/*/*/__pycache__/
+hamerapp/venv/
+.env/
+.venv/
+venv/
+
+# Local PostgreSQL data
+data/

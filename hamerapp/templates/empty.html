@@ -1,0 +1,145 @@
+{% block javascript %}
+<script>
+    function btnlinkload(curren, text) {
+        if (!text) {
+            text = "Vui lòng đợi ";
+        }
+        curren.html(text + ' <i class="fa fa-spinner fa-spin uk-icon-spinner uk-icon-spin "></i>');
+        curren.prop("disabled ", true);
+    }
+
+    function btnlinkthanhcong(curren, text) {
+        curren.html(text);
+        curren.prop("disabled ", false);
+    }
+
+    $("#form-order ").submit(function(e) {
+        e.preventDefault();
+        btnlinkload($("#btnOrder "), 'Please wait');
+        // GET AJAX request
+        $.ajax({
+            type: 'GET',
+            url: "{% url 'orderProduct' %} ",
+            data: {
+                "check_what ": check_what
+            },
+            success: function(response) {
+                // if not valid user, alert the user
+                if (response["valid "]) {
+                    //alert("Check successful ");
+                    let _html = ` <div class='popupCheckCode-header'>
+                                            <p>
+                                                This is an original product of Sino - USA Collaboration
+                                            </p>
+                                        </div>
+                                        <div class='popupCheckCode-body'>
+                                            <div class='popupCheckCode-seri'>
+                                                Serial: ${response["serial_no "]}
+                                            </div>
+                                            <div class='popupCheckCode-content'>
+                                                <div class='popupCheckCode-content_column'>
+                                                    <div class='title'>
+                                                        <i class='fal fa-qrcode'></i>
+                                                        Code scans
+                                                    </div>
+                                                    <div class='number'>
+                                                        1
+                                                    </div>
+                                                </div>
+                                                <div class='popupCheckCode-content_column'>
+                                                    <div class='title'>
+                                                        <i class='fal fa-user-friends'></i>
+                                                        People scans
+                                                    </div>
+                                                    <div class='number'>
+                                                        1
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>`;
+
+                    Swal.fire({
+                        icon: 'success',
+                        html: _html,
+                        showConfirmButton: false,
+                        customClass: 'swalPopUpCheckCode',
+                    });
+                    btnlinkthanhcong($("#btnCheckProductCode "), 'Check');
+                } else {
+                    //alert("Check error ");
+                    let _html = `<div class='popupCheckCode-header'>
+                                        <p class='py-1'>
+                                            Warning: This product could be fake or counterfeit because this is not a product of Sino - USA Collaboration
+                                        </p>
+                                        <p class='py-0'>---</p>
+                                        <p class='py-1'>Please send email to hamer2uchecking@gmail.com to support as soon as possible</p>
+                                        <p class='pt-1 pb-2'>Thank you !</p>
+                                    </div>
+                                    <div class='popupCheckCode-body'>
+                                        <div class='popupCheckCode-seri'>
+                                        Serial: 0
+                                        </div>
+                                        <div class='popupCheckCode-content'>
+                                            <div class='popupCheckCode-content_column'>
+                                                <div class='title'>
+                                                    <i class='fal fa-qrcode'></i>
+                                                    Code scans
+                                                </div>
+                                                <div class='number'>
+                                                    0
+                                                </div>
+                                            </div>
+                                            <div class='popupCheckCode-content_column'>
+                                                <div class='title'>
+                                                    <i class='fal fa-user-friends'></i>
+                                                    People scans
+                                                </div>
+                                                <div class='number'>
+                                                    0
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>`;
+                    Swal.fire({
+                        icon: 'error',
+                        html: _html,
+                        showConfirmButton: false,
+                        customClass: 'swalPopUpCheckCode error',
+                    });
+                    btnlinkthanhcong($("#btnOrder "), 'Buy now');
+                }
+            },
+            error: function(response) {
+                console.log(response);
+            }
+        })
+    })
+</script>
+{% endblock javascript %}
+
+<!-- <meta itemprop="name" content="{{webcontent.web_title}}">
+    <meta itemprop="description" content="{{webcontent.web_title}}">
+    <meta itemprop="url" content="">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:url" content="">
+    <meta name="twitter:title" content="{{webcontent.web_title}}">
+    <meta name="twitter:description" content="{{webcontent.web_title}}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="">
+    <meta property="og:site_name" content="{{webcontent.site_name}}">
+    <meta property="og:title" content="{{webcontent.web_title}}">
+    <meta property="og:description" content="{{webcontent.web_title}}"> -->
+
+<!-- <meta itemprop="name" content="{{webcontent.web_title}}">
+    <meta itemprop="description" content="{{webcontent.web_title}}">
+    <meta itemprop="url" content="">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:url" content="">
+    <meta name="twitter:title" content="{{webcontent.web_title}}">
+    <meta name="twitter:description" content="{{webcontent.web_title}}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{webcontent.site_name}}">
+    <meta property="og:site_name" content="hamer2u-checking.com">
+    <meta property="og:title" content="{{webcontent.web_title}}">
+    <meta name="description" content="{{webcontent.web_title}}">
+    <meta property="og:description" content="{{webcontent.web_title}}"> -->

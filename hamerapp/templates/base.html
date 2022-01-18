@@ -1,0 +1,137 @@
+<!doctype html> {% load static %}
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="msapplication-TileColor" content="#f05f26">
+    <meta name="theme-color" content="#f05f26">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320"> {{seo.tags|safe}}
+    <meta property="og:image" alt="{{webcontent.web_title}}" content="{% static 'public/upload/images/eng-banner-mobile.png' %} ">
+    <meta name="twitter:image" content="{% static 'public/upload/logo/LOGO-HAMER-CANDY-NEW.png' %} ">
+    <meta name="msapplication-TileImage" content="{% static 'view/frontend/assets/images/cropped-LOGO-HAMER-CANDY-NEW-270x270.png' %}" />
+
+    <link rel="shortcut icon" type="image/png" href="{% static 'public/upload/logo/favicon-sso.png' %} ">
+    <title>{{webcontent.web_title}}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+
+    <noscript>
+		<style>
+			body {
+				display: none !important;
+			}
+		</style>
+	</noscript>
+
+    <link href="{% static 'view/frontend/assets/plugins/bootstrap/bootstrap.min.css' %}" type="text/css" rel="stylesheet">
+    <link href="{% static 'view/frontend/assets/css/all.min.css' %}" type="text/css" rel="stylesheet">
+    <link href="{% static 'view/frontend/assets/plugins/swiper/swiper.min.css' %}" type="text/css" rel="stylesheet">
+    <link href="{% static 'view/frontend/assets/plugins/owlcarousel/owl.carousel.min.css' %}" type="text/css" rel="stylesheet">
+    <link href="{% static 'view/frontend/assets/plugins/fancybox/fancybox.min.css' %}" type="text/css" rel="stylesheet">
+    <link href="{% static 'view/frontend/assets/plugins/magnific-popup/magnific.css' %}" type="text/css" rel="stylesheet">
+    <link href="{% static 'view/frontend/assets/plugins/sweetalert2/sweetalert2.min.css' %}" type="text/css" rel="stylesheet">
+    <link href="{% static 'view/frontend/assets/plugins/animate.min.css' %}" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'view/frontend/assets/css/style.css' %}">
+
+    <script src="{% static 'view/frontend/assets/js/jquery-3.2.1.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'view/frontend/assets/plugins/bootstrap/bootstrap.bundle.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'view/frontend/assets/plugins/swiper/swiper.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'view/frontend/assets/plugins/owlcarousel/owl.carousel.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'view/frontend/assets/plugins/fancybox/fancybox.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'view/frontend/assets/plugins/magnific-popup/magnific.js' %}" type="text/javascript"></script>
+    <script src="{% static 'view/frontend/assets/plugins/wow/wow.js' %}" type="text/javascript"></script>
+    <script src="{% static 'view/frontend/assets/js/lazyload.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'view/frontend/assets/js/footer.js' %}" type="text/javascript"></script>
+    <script src="{% static 'view/frontend/assets/plugins/sweetalert2/sweetalert2.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'view/frontend/assets/plugins/vanillajs-scrollspy.min.js' %}" type="text/javascript"></script>
+    <script defer type="text/javascript" src="{% static 'view/frontend/assets/js/theme.js' %}"></script>
+    <link rel="icon" href="{% static 'view/frontend/assets/images/cropped-LOGO-HAMER-CANDY-NEW-32x32.png' %}" sizes="32x32" />
+    <link rel="icon" href="{% static 'view/frontend/assets/images/cropped-LOGO-HAMER-CANDY-NEW-192x192.png' %}" sizes="192x192" />
+    <link rel="apple-touch-icon-precomposed" href="{% static 'view/frontend/assets/images/cropped-LOGO-HAMER-CANDY-NEW-180x180.png' %}" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+    <header id="header" class="header-wrapper">
+        <div class="container">
+            <div class="header-wrapper_inner">
+                <div class="header-wrapper_logo">
+                    <a href="javascript:void(0)" class="callNavigation">
+                        <i class="fal fa-bars"></i>
+                    </a>
+                    <a href="{% url 'home' %}">
+                        <img src="{% static 'public/upload/logo/LOGO-HAMER-CANDY-NEW.png' %} " alt="Home - Hamer USA">
+                    </a>
+                </div>
+                <div class="header-wrapper_navigation">
+                    <ul id="menu" class="list-unstyled mb-0">
+                        {% for menu in main_menus %}
+                        <li>
+                            {% if menu.has_child_article_menu %}
+                            <a class="menu-item" href="javascript:void(0)">{{menu.name}}</a>
+                            <div class="dropdown-menu">
+                                {% for article in articles %}
+                                <a class="dropdown-item" href="{% url 'article' article.slug  %}">{{article.title}}</a> {% endfor %}
+                            </div>
+                            {% else %} {% if menu.tag != None %}
+                            <a class="menu-item" href="{% url 'home' %}{{menu.tag}}">{{menu.name}}</a> {% else %}
+                            <a class="menu-item" href="{% url 'home' %}">{{menu.name}}</a> {% endif %} {% endif %}
+                        </li>
+                        {% endfor %}
+                        <!-- <li>
+                            <a class="active menu-item" href="{% url 'home' %}">Home</a>
+                        </li>
+                        <li>
+                            <a class="menu-item" href="{% url 'home' %}#about">About</a>
+                        </li>
+                        <li>
+                            <a class="menu-item" href="{% url 'home' %}#ingredients">Ingredients</a>
+                        </li>
+                        <li>
+                            <a class="menu-item" href="javascript:void(0)">Products</a>
+                            <div class="dropdown-menu">
+                                {% for article in articles %}
+                                <a class="dropdown-item" href="{% url 'article' article.id  %}">{{article.title}}</a> {% endfor %}
+                            </div>
+
+                        </li>
+                        <li>
+                            <a class="menu-item" href="{% url 'home' %}#photo">Photo</a>
+                        </li> -->
+                    </ul>
+                </div>
+                <div class="header-wrapper_phone">
+                    <a href="tel:{{webcontent.phone_number}}" class="button text-capitalize">Hotline:&nbsp;+{{webcontent.phone_number}}</a>
+                </div>
+            </div>
+        </div>
+        <div class="header-close">
+            <a href="javascript:void(0)" class="closeNavigation">
+                <i class="fas fa-times"></i>
+            </a>
+        </div>
+        <div class="header-overlay"></div>
+    </header>
+
+    {% comment %} {% include 'navbar_old.html' %} {% endcomment %}
+    <div class="template-main">
+        {% block content %} {% endblock content %}
+    </div>
+
+    {% include 'footer.html' %}
+    <script defer type="text/javascript " src="{% static 'view/frontend/index/js/index.js' %} "></script>
+    <div class='modal fade ' id='popupCheckCode '>
+        <div class='modal-dialog modal-dialog-centered '>
+            <div class='modal-content '>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
