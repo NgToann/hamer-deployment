@@ -20,27 +20,27 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = 'django-insecure-a%x(s@6d0nwag7@z6*qr--1bp0_m=tdz4zax$h!*hg81_0ehfx'
-SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = 'django-insecure-a%x(s@6d0nwag7@z6*qr--1bp0_m=tdz4zax$h!*hg81_0ehfx'
+# SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECRET_KEY = 'ngtoann'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = os.environ.get('DEBUG')
-DEBUG = bool(int(os.environ.get('DEBUG', 0)))
-# DEBUG=True
+# DEBUG = bool(int(os.environ.get('DEBUG', 0)))
+DEBUG=True
 
 
 
 # ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 # ALLOWED_HOSTS = ['https://hamerapp.herokuapp.com/']
-# ALLOWED_HOSTS = ['*']
-ALLOWED_HOSTS = []
-ALLOWED_HOSTS.extend(
-    filter(
-        None,
-        os.environ.get('ALLOWED_HOSTS', '').split(','),
-    )
-)
+ALLOWED_HOSTS = ['*']
+# ALLOWED_HOSTS = []
+# ALLOWED_HOSTS.extend(
+#     filter(
+#         None,
+#         os.environ.get('ALLOWED_HOSTS', '').split(','),
+#     )
+# )
 # Application definition
 
 INSTALLED_APPS = [
@@ -94,22 +94,22 @@ WSGI_APPLICATION = 'diep_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-# print(os.environ)
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'HOST': os.environ.get('DB_HOST'),
-        'NAME': os.environ.get('DB_NAME'),
-        'USER': os.environ.get('DB_USER'),
-        'PASSWORD': os.environ.get('DB_PASS'),
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+# print(os.environ)
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'HOST': os.environ.get('DB_HOST'),
+#         'NAME': os.environ.get('DB_NAME'),
+#         'USER': os.environ.get('DB_USER'),
+#         'PASSWORD': os.environ.get('DB_PASS'),
+#     }
+# }
 
 
 # Password validation
