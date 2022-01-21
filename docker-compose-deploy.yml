@@ -1,6 +1,17 @@
 version: '3.9'
 
 services:
+  uptime:
+    image: louislam/uptime-kuma:1
+    container_name: uptime
+    restart: always
+    ports:
+      - 3001:3001
+    volumes:
+      - uptime-data:/app/data
+    depends_on:
+      - db
+      - app
   app:
     build:
       context: .
@@ -42,3 +53,4 @@ services:
 volumes:
   postgres-data:
   static-data:    
+  uptime-data:
