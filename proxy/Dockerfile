@@ -3,6 +3,8 @@ LABEL maintainer="ngtoann"
 
 COPY ./default.conf.tpl /etc/nginx/default.conf.tpl
 COPY ./uwsgi_params /etc/nginx/uwsgi_params
+COPY ./hamerusa_vn_cert.key /etc/nginx/hamerusa_vn_cert.key
+COPY ./hamerusa_vn_cert.pem /etc/nginx/hamerusa_vn_cert.pem
 COPY ./run.sh /run.sh
 
 ENV LISTEN_PORT=8000
