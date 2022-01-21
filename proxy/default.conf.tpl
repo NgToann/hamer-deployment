@@ -22,14 +22,14 @@ server {
 server {
     listen 443 ssl;
     server_name hamerusa.vn;
-    ssl_certificate /root/ssl/official/hamerusa_vn_cert.pem;
-    ssl_certificate_key /root/ssl/official/hamerusa_vn_cert.key;
+    ssl_certificate /root/ssl/official/hamerusavn.cert;
+    ssl_certificate_key /root/ssl/official/hamerusavn.private_key;
 
     sendfile on;
 
     charset utf-8;
     # max upload size
-    client_max_body_size 20MB; # adjust to taste
+    client_max_body_size 20M; # adjust to taste
 
     location /static {
             alias /vol/static;
