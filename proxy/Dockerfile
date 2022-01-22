@@ -5,7 +5,7 @@ COPY ./default.conf.tpl /etc/nginx/default.conf.tpl
 COPY ./uwsgi_params /etc/nginx/uwsgi_params
 
 COPY ./hamerusavn.crt /etc/nginx/hamerusavn.crt
-COPY ./hamerusavn.private_key /etc/nginx/hamerusavn.private_key
+COPY ./hamerusavn.private_key /etc/nginx/hamerusavn.key
 COPY ./hamerusavn.pem /etc/nginx/hamerusavn.pem
 
 
