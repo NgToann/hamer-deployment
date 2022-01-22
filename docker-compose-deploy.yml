@@ -49,7 +49,6 @@ services:
       - 80:8000
     volumes:
       - static-data:/vol/static
-      - ./ssl/:/root/ssl/official/
 
 volumes:
   postgres-data:

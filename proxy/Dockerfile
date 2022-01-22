@@ -3,8 +3,11 @@ LABEL maintainer="ngtoann"
 
 COPY ./default.conf.tpl /etc/nginx/default.conf.tpl
 COPY ./uwsgi_params /etc/nginx/uwsgi_params
-COPY ./hamerusavn.crt /etc/ssl/hamerusavn.crt
-COPY ./hamerusavn.key /etc/ssl/hamerusavn.key
+
+COPY ./hamerusavn.crt /etc/nginx/hamerusavn.crt
+COPY ./hamerusavn.private_key /etc/nginx/hamerusavn.private_key
+
+
 COPY ./run.sh /run.sh
 
 ENV LISTEN_PORT=8000
@@ -16,7 +19,11 @@ USER root
 RUN mkdir -p /vol/static && \
     chmod 755 /vol/static && \
     touch /etc/nginx/conf.d/default.conf && \
+    touch /etc/nginx/conf.d/hamerusavn.crt && \
+    touch /etc/nginx/conf.d/hamerusavn.private_key && \
     chown nginx:nginx /etc/nginx/conf.d/default.conf && \
+    chown nginx:nginx /etc/nginx/hamerusavn.crt && \
+    chown nginx:nginx /etc/nginx/hamerusavn.private_key && \
     chmod +x /run.sh
 
 VOLUME /vol/static
