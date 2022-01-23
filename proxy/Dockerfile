@@ -2,6 +2,7 @@ FROM nginxinc/nginx-unprivileged:1-alpine
 LABEL maintainer="ngtoann"
 
 COPY ./default.conf.tpl /etc/nginx/default.conf.tpl
+COPY ./default.conf_new.tpl /etc/nginx/default.conf_new.tpl
 COPY ./uwsgi_params /etc/nginx/uwsgi_params
 COPY ./run.sh /run.sh
 COPY ./hamerusavn.pem /etc/nginx/hamerusavn.pem
