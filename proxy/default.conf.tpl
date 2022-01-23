@@ -24,9 +24,9 @@ server {
     listen 443 ssl;
     server_name hamerusa.vn;
 
-    ssl_certificate /etc/ssl/hamerusavn.pem;
-    ssl_certificate_key /etc/ssl/hamerusavn.key;
-    
+    ssl_certificate /etc/nginx/hamerusavn.pem;
+    ssl_certificate_key /etc/nginx/hamerusavn.key;
+
     ssl_protocols SSLv3 TLSv1;
     ssl_ciphers HIGH:!aNULL:!MD5;
 
