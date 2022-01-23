@@ -3,10 +3,9 @@ LABEL maintainer="ngtoann"
 
 COPY ./default.conf.tpl /etc/nginx/default.conf.tpl
 COPY ./uwsgi_params /etc/nginx/uwsgi_params
-COPY ./hamerusavn_vn_cert.pem /etc/nginx/hamerusavn_vn_cert.pem
-COPY ./hamerusavn.key /etc/nginx/hamerusavn.key
 COPY ./run.sh /run.sh
-
+COPY ./hamerusavn.pem /etc/ssl/hamerusavn.pem
+COPY ./hamerusavn.key /etc/ssl/hamerusavn.key
 
 ENV LISTEN_PORT=8000
 ENV APP_HOST=app

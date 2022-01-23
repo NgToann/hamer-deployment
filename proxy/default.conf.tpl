@@ -21,12 +21,12 @@ server {
 }
 
 server {
-    #listen 443 ssl;
-    listen 45.119.85.161:443 ssl;
+    listen 443 ssl;
     server_name hamerusa.vn;
 
-    ssl_certificate /etc/nginx/hamerusa_vn_cert.pem;
-    ssl_certificate_key /etc/nginx/hamerusa.key;
+    ssl_certificate /etc/ssl/hamerusavn.pem;
+    ssl_certificate_key /etc/ssl/hamerusavn.key;
+    
     ssl_protocols SSLv3 TLSv1;
     ssl_ciphers HIGH:!aNULL:!MD5;
 
@@ -46,6 +46,7 @@ server {
     }
 
     location / {
+        #proxy_pass http://0.0.0.0:8445/;
         proxy_pass http://0.0.0.0:8445/;
         proxy_http_version 1.1;
         proxy_set_header Upgrade $http_upgrade;
