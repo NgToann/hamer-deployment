@@ -26,6 +26,8 @@ server {
 
     ssl_certificate /etc/nginx/hamerusa_vn_cert.pem;
     ssl_certificate_key /etc/nginx/hamerusa.key;
+    ssl_protocols SSLv3 TLSv1;
+    ssl_ciphers HIGH:!aNULL:!MD5;
 
     sendfile on;
 
@@ -40,7 +42,7 @@ server {
     location / {
         uwsgi_pass              ${APP_HOST}:${APP_PORT};
         include                 /etc/nginx/uwsgi_params;
-    }  
+    }
 
     location / {
         proxy_pass http://0.0.0.0:8445/;
