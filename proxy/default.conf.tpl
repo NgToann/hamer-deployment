@@ -21,7 +21,8 @@ server {
 }
 
 server {
-    listen 443 ssl;
+    #listen 443 ssl;
+    listen 45.119.85.161:443 ssl;
     server_name hamerusa.vn;
 
     ssl_certificate /etc/nginx/hamerusa_vn_cert.pem;
