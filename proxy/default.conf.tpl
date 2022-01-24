@@ -16,6 +16,8 @@
 server {
     listen 80; 
     server_name hamerusa.vn;
+    uwsgi_pass              ${APP_HOST}:${APP_PORT};
+    include                 /etc/nginx/uwsgi_params;
     access_log off;
     return 301 https://$server_name$request_uri;
 }
@@ -41,8 +43,6 @@ server {
     }
 
     location / {
-        uwsgi_pass              ${APP_HOST}:${APP_PORT};
-        include                 /etc/nginx/uwsgi_params;
         proxy_pass http://0.0.0.0:8000/;
         proxy_http_version 1.1;
         proxy_set_header Upgrade $http_upgrade;
