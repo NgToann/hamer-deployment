@@ -40,6 +40,7 @@ server {
 
     location /static {
         alias /vol/static;
+        alias /vol/static;
     }
 
     location / {
