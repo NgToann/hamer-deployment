@@ -45,12 +45,12 @@ server {
         include                 /etc/nginx/uwsgi_params;
     }
 
-    location / {
-        #proxy_pass http://0.0.0.0:8445/;
-        proxy_pass http://0.0.0.0:8445/;
-        proxy_http_version 1.1;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection "upgrade";
-        proxy_set_header Host $host;
-    }
+    #location / {
+    #    #proxy_pass http://0.0.0.0:8445/;
+    #    proxy_pass http://0.0.0.0:8445/;
+    #    proxy_http_version 1.1;
+    #    proxy_set_header Upgrade $http_upgrade;
+    #    proxy_set_header Connection "upgrade";
+    #    proxy_set_header Host $host;
+    #}
 }
