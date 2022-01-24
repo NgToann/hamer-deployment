@@ -27,8 +27,8 @@ server {
     ssl_certificate /etc/nginx/hamerusavn.crt;
     ssl_certificate_key /etc/nginx/hamerusavn.key;
 
-    #ssl_protocols SSLv3 TLSv1;
-    #ssl_ciphers HIGH:!aNULL:!MD5;
+    ssl_protocols SSLv3 TLSv1;
+    ssl_ciphers HIGH:!aNULL:!MD5;
 
     sendfile on;
 
@@ -43,14 +43,20 @@ server {
     location / {
         uwsgi_pass              ${APP_HOST}:${APP_PORT};
         include                 /etc/nginx/uwsgi_params;
-    }
-
-    location / {
-    #    #proxy_pass http://0.0.0.0:8445/;
         proxy_pass http://0.0.0.0:8000/;
         proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+        proxy_set_header Host $host;
+
+    }
+
+    #location / {
+    #    proxy_pass http://0.0.0.0:8445/;
+    #    proxy_pass http://0.0.0.0:8000/;
+    #    proxy_http_version 1.1;
     #    proxy_set_header Upgrade $http_upgrade;
     #    proxy_set_header Connection "upgrade";
     #    proxy_set_header Host $host;
-    }
+    #}
 }
