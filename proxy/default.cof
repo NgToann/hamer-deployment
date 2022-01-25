@@ -1,12 +1,37 @@
+#server {
+#    listen 8000;
+#    server_name www.hamerusa.vn;
+#    return 301 https://$server_name$request_uri;
+#}
+#
+#server {
+#    listen 443 ssl;
+#    server_name www.hamerusa.vn;
+#    ssl_certificate         /etc/nginx/hamerusavn.crt;
+#    ssl_certificate_key     /etc/nginx/hamerusavn.key;
+#
+#    ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+#    ssl_ciphers HIGH:!aNULL:!MD5;
+#
+#    location /static {
+#        alias /vol/static;
+#    }
+#
+#    location / {
+#        uwsgi_pass              app:9000;
+#        include                 /etc/nginx/uwsgi_params;
+#        client_max_body_size    10M;
+#    }
+#}
 server {
     listen 8000;
     server_name www.hamerusa.vn;
-    return 301 https://$server_name$request_uri;
 }
 
 server {
     listen 443 ssl;
     server_name www.hamerusa.vn;
+    #ssl_certificate         /etc/nginx/hamerusavn.crt;
     ssl_certificate         /etc/nginx/hamerusavn.crt;
     ssl_certificate_key     /etc/nginx/hamerusavn.key;
 
