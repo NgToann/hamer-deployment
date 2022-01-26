@@ -101,7 +101,7 @@ server {
         proxy_request_buffering off;
         proxy_http_version 1.1;
         proxy_intercept_errors on;
-        proxy_pass          http://hamerusa.vn;        
+        proxy_pass          http://hamerusa.vn;
     }
   }
   //https://gist.github.com/davewongillies/6897161
