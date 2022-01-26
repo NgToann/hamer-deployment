@@ -45,9 +45,10 @@ services:
     restart: always
     depends_on:
       - app
-    ports:
-      - 80:8000
-      - 443:443
+    #ports:
+    expose:
+      - 80
+      - 443
     volumes:
       - static-data:/vol/static
 
