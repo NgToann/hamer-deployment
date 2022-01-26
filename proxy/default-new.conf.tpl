@@ -12,12 +12,18 @@
 #        }
 #}
 
-
 server {
-    listen 80; 
-    server_name hamerusa.vn;
-    uwsgi_pass              ${APP_HOST}:${APP_PORT};    
-    return 301 https://$server_name$request_uri;
+    listen 8000;
+
+    location /static {
+        alias /vol/static;
+    }
+
+    location / {
+        uwsgi_pass              app:9000;
+        include                 /etc/nginx/uwsgi_params;
+        client_max_body_size    10M;
+    }
 }
 
 server {
@@ -33,10 +39,7 @@ server {
     sendfile on;
 
     charset utf-8;
-    # max upload size
-    client_max_body_size 40M; # adjust to taste
-    include                 /etc/nginx/uwsgi_params;
-    access_log off;
+    
     location /static {
         alias /vol/static;
     }
@@ -50,5 +53,8 @@ server {
         proxy_set_header X-Forwarded-For         $proxy_add_x_forwarded_for;
         proxy_set_header X-Forwarded-Proto https;
         proxy_pass http://45.119.85.161;
+        uwsgi_pass              app:9000;
+        include                 /etc/nginx/uwsgi_params;
+        client_max_body_size    10M;
     }
 }
