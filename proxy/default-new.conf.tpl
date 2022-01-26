@@ -67,10 +67,10 @@ server {
 server {
  
     listen 443;
-    server_name vinahost.vn;
+    server_name hamerusa.vn;
  
-    ssl_certificate          /etc/nginx/cert.crt;
-    ssl_certificate_key      /etc/nginx/cert.key;
+    ssl_certificate          /etc/nginx/hamerusavn.crt;
+    ssl_certificate_key      /etc/nginx/hamerusavn.key;
  
     ssl on;
     ssl_session_cache  builtin:1000  shared:SSL:10m;
@@ -78,7 +78,7 @@ server {
     ssl_ciphers HIGH:!aNULL:!eNULL:!EXPORT:!CAMELLIA:!DES:!MD5:!PSK:!RC4;
     ssl_prefer_server_ciphers on;
  
-    access_log            /var/log/nginx/vinahost.vn.access.log;
+    #access_log            /var/log/nginx/vinahost.vn.access.log;
  
     location / {
  
