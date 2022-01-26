@@ -66,7 +66,7 @@ server {
  
 server {
  
-    listen 443;
+    listen 443 ssl;
     server_name hamerusa.vn;
  
     ssl_certificate          /etc/nginx/hamerusavn.crt;
