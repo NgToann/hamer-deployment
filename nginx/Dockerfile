@@ -9,10 +9,10 @@ ENV LISTEN_PORT=8000
 ENV APP_HOST=app
 ENV APP_PORT=9000
 
-USER root
-
 RUN rm /etc/nginx/conf.d/default.conf
 COPY nginx.conf /etc/nginx/conf.d
+
+USER root
 
 RUN mkdir -p /vol/static && \
     chmod 755 /vol/static && \
