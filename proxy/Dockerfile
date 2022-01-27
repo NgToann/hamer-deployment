@@ -16,7 +16,8 @@ RUN mkdir -p /vol/static && \
     touch /etc/nginx/conf.d/default.conf && \
     chown nginx:nginx /etc/nginx/conf.d/default.conf && \
     chmod +x /run.sh &&\
-    chmod 755 /var/log/nginx
+    chmod 755 /var/log/nginx &&\
+    chown -R nginx:nginx /var/log/nginx
 
 VOLUME /vol/static
 
