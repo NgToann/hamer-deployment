@@ -12,7 +12,7 @@ help: ## This help.
 
 # DOCKER TASKS
 deploy: ## 
-	docker-compose pull && docker-compose up -d
+	docker-compose -f docker-compose-deploy.yml pull && docker-compose -f docker-compose-deploy.yml up -d
 
 log:
 	docker logs -f app
