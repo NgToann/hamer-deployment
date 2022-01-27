@@ -18,7 +18,7 @@ RUN python -m venv /py && \
     apk add --update jpeg-dev \
         zlib-dev && \
     apk add --update --no-cache --virtual .tmp-deps \
-        build-base postgresql-dev musl-dev linux-headers && \
+        build-base postgresql-dev musl-dev linux-headers curl && \
     /py/bin/pip install -r /requirements.txt && \
     apk del .tmp-deps && \
     adduser --disabled-password --no-create-home app && \
