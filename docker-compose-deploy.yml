@@ -18,14 +18,8 @@ services:
     restart: always
     volumes:
       - static-data:/vol/web
-    environment:
-      - DB_HOST=db
-      - DB_NAME=${DB_NAME}
-      - DB_USER=${DB_USER}
-      - DB_PASS=${DB_PASS}
-      - DB_PORT=${DB_PORT}
-      - SECRET_KEY=${SECRET_KEY}
-      - ALLOWED_HOSTS=${ALLOWED_HOSTS}
+    env_file:
+      - .env
     depends_on:
       - db
 
