@@ -33,9 +33,9 @@ services:
       - POSTGRES_USER=${DB_USER}
       - POSTGRES_PASSWORD=${DB_PASS}
 
-  nginx:
+  proxy:
     build:
-      context: ./nginx
+      context: ./proxy
     restart: always
     depends_on:
       - app
