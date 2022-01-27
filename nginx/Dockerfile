@@ -11,13 +11,11 @@ ENV APP_PORT=9000
 
 USER root
 
+RUN rm /etc/nginx/conf.d/default.conf
+COPY nginx.conf /etc/nginx/conf.d
+
 RUN mkdir -p /vol/static && \
     chmod 755 /vol/static && \
-    cp ./hamerusavn.crt /etc/nginx/hamerusavn.crt && \
-    cp ./hamerusavn.key /etc/nginx/hamerusavn.key && \
-    cp ./default.conf /etc/nginx/conf.d/default.conf && \
-    # touch /etc/nginx/conf.d/default.conf && \
-    # chown nginx:nginx /etc/nginx/conf.d/default.conf && \
     chmod +x /run.sh
 
 VOLUME /vol/static
