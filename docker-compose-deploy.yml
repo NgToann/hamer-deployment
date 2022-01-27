@@ -4,6 +4,7 @@ services:
   app:
     build:
       context: .
+    container_name: app
     restart: always
     volumes:
       - static-data:/vol/web
@@ -19,6 +20,7 @@ services:
 
   db:
     image: postgres:13-alpine
+    container_name: db
     restart: always
     volumes:
       - postgres-data:/var/lib/postgresql/data
@@ -31,6 +33,7 @@ services:
     build:
       context: ./proxy
     restart: always
+    container_name: proxy
     depends_on:
       - app
     ports:
