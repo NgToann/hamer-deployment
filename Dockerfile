@@ -14,9 +14,6 @@ EXPOSE 8000
 
 RUN python -m venv /py && \
     /py/bin/python -m pip install --upgrade pip && \
-    # /py/bin/python -m pip install pip==19.3.1 && \
-    # /py/bin/python -m pip install Pillow && \
-    # /py/bin/python -m pip install --upgrade Pillow && \
     apk add --update --no-cache postgresql-client && \
     apk add --update jpeg-dev \
         zlib-dev && \
