@@ -5,4 +5,4 @@ set -e
 python manage.py collectstatic --noinput
 python manage.py migrate
 
-uwsgi --socket :8000 --workers 4 --master --enable-threads --module diep_project.wsgi
+uwsgi --socket :9000 --workers 4 --master --enable-threads --module diep_project.wsgi
