@@ -29,7 +29,7 @@ RUN python -m venv /py && \
     chmod -R +x /scripts
 
 ## ENV PATH="/py/bin:$PATH"
-## ENV PATH="/scripts:/py/bin:$PATH"
+ENV PATH="/scripts:/py/bin:$PATH"
 
 USER app
 
